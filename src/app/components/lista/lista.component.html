@@ -1,0 +1,26 @@
+<h1>Paises</h1>
+<hr>
+<div style="display:flex;">
+       
+        <ul class="list-group col-4"cdkDropList style="border: 1px solid black;"
+        [cdkDropListData]="paises"
+        (cdkDropListDropped)="drop($event)"[cdkDropListConnectedTo]="[segundoArray,tercerArray]" #primerArray="cdkDropList">
+        <h5>Paises que hablan español</h5>
+                <li class="list-group-item" cdkDrag *ngFor="let pais of paises" >{{pais.name}}</li>
+            </ul>
+          
+        <ul class="list-group col-4" style="border: 1px solid black;margin-left:2vh;"cdkDropList 
+        [cdkDropListData]="paisesSudamerica"
+        (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[primerArray,tercerArray]" #segundoArray="cdkDropList">
+        <h5>Paises de sudamerica</h5>
+                <li class="list-group-item" *ngFor="let pais of paisesSudamerica" cdkDrag>{{pais.name}}</li>
+            </ul>
+            <ul class="list-group col-4" style="border: 1px solid black;margin-left:2vh;"cdkDropList 
+            [cdkDropListData]="otrosPaises"
+            (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[primerArray,segundoArray]" #tercerArray="cdkDropList">
+            <h5>otros paises</h5>
+                    <li class="list-group-item" *ngFor="let pais of otrosPaises" cdkDrag>{{pais.name}}</li>
+                </ul>
+</div>
+
+
