@@ -30,8 +30,6 @@ export class ListaComponent implements OnInit {
       transferArrayItem(evento.previousContainer.data,evento.container.data,evento.previousIndex,evento.currentIndex);
     }else{
       moveItemInArray(this.paises,evento.previousIndex,evento.currentIndex);
-
-  
     }
   }
 }

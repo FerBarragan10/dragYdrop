@@ -1,6 +1,6 @@
 <h1>Paises</h1>
 <hr>
-<div style="display:flex;">
+<!-- <div style="display:flex;">
        
         <ul class="list-group col-4"cdkDropList style="border: 1px solid black;"
         [cdkDropListData]="paises"
@@ -22,5 +22,35 @@
                     <li class="list-group-item" *ngFor="let pais of otrosPaises" cdkDrag>{{pais.name}}</li>
                 </ul>
 </div>
+ -->
 
-
+<div style="display:flex"> 
+    <div cdkDropList  class="example-list" [cdkDropListData]="paises" (cdkDropListDropped)="drop($event)"
+    [cdkDropListConnectedTo]="[segundoArray,tercerArray]" #primerArray="cdkDropList"
+    style="width:25%;height:15%;border:1px solid black;margin-left:2vh">
+         <h5>Paises que hablan español</h5>
+        <div  cdkDrag *ngFor="let pais of paises" class="example-box" style="border:1px solid grey">
+            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+            {{pais.name}}
+        </div>
+    </div>
+    
+    <div   class="example-list"  cdkDropList [cdkDropListData]="paisesSudamerica" (cdkDropListDropped)="drop($event)"
+    [cdkDropListConnectedTo]="[primerArray,tercerArray]" #segundoArray="cdkDropList"
+    style="width:25%;height:15%;border:1px solid black;margin-left:2vh">
+        <h5>Paises de sudamerica</h5>
+       <div  cdkDrag *ngFor="let pais of paisesSudamerica" class="example-box" style="border:1px solid grey">
+           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+           {{pais.name}}
+       </div>
+   </div>
+   <div   class="example-list"  cdkDropList [cdkDropListData]="otrosPaises" (cdkDropListDropped)="drop($event)"
+    [cdkDropListConnectedTo]="[primerArray,segundoArray]" #tercerArray="cdkDropList"
+    style="width:25%;height:15%;border:1px solid black;margin-left:2vh">
+        <h5>otros paises</h5>
+       <div  cdkDrag *ngFor="let pais of otrosPaises" class="example-box" style="border:1px solid black">
+           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+           {{pais.name}}
+       </div>
+   </div>
+</div>
